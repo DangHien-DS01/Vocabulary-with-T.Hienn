@@ -826,7 +826,7 @@
                 </div>
                 <div class="ai-detail-box">
                     <div class="ai-detail-title">Đồng nghĩa</div>
-                    <div id="prev-synonyms" style="color: var(--magic-purple); font-weight: 700;">related term</div>
+                    <div id="prev-synonyms" style="color: var(--magic-purple); font-weight: 700;"></div>
                 </div>
                 <div class="ai-detail-box">
                     <div class="ai-detail-title">Collocations &amp; Ví dụ</div>
@@ -1532,8 +1532,22 @@
                 }
             } catch(e) {}
 
-            synonyms = Array.from(new Set(synonyms)).slice(0, 4);
-            if (synonyms.length === 0) synonyms = ["related term"];
+            // Tra cứu thêm từ đồng nghĩa chuẩn qua Datamuse API (rel_syn)
+            try {
+                const synRes = await fetch(`https://api.datamuse.com/words?rel_syn=${encodeURIComponent(rawWord)}&max=6`);
+                if (synRes.ok) {
+                    const synData = await synRes.json();
+                    if (Array.isArray(synData)) {
+                        synData.forEach(item => {
+                            if (item.word) synonyms.push(item.word);
+                        });
+                    }
+                }
+            } catch(e) {}
+
+            synonyms = Array.from(new Set(synonyms))
+                .filter(s => s.toLowerCase() !== rawWord.toLowerCase())
+                .slice(0, 4);
 
             let meaningVi = await translateTextAuto(rawWord) || "Nghĩa tiếng Việt";
 
@@ -1575,7 +1589,7 @@
             regBadge.className = `register-badge reg-${currentPendingAIWord.register.toLowerCase()}`;
 
             document.getElementById('prev-meaning').innerText = currentPendingAIWord.meaningVi;
-            document.getElementById('prev-synonyms').innerText = currentPendingAIWord.synonyms.join(', ');
+            document.getElementById('prev-synonyms').innerText = currentPendingAIWord.synonyms.length > 0 ? currentPendingAIWord.synonyms.join(', ') : 'Không có';
 
             let colloHTML = '';
             currentPendingAIWord.collocations.forEach(c => {
