@@ -1545,8 +1545,17 @@
                 }
             } catch(e) {}
 
+            // BỘ LỌC TỪ ĐỒNG NGHĨA CHUẨN: Lọc sạch các từ rác hoặc cụm từ rác như "related term"
+            const blacklistSynonyms = ['related term', 'related terms', 'related', 'see also', 'synonym', 'antonym', 'n/a', 'none', 'undefined', 'null'];
             synonyms = Array.from(new Set(synonyms))
-                .filter(s => s.toLowerCase() !== rawWord.toLowerCase())
+                .map(s => (typeof s === 'string' ? s.trim() : ''))
+                .filter(s => {
+                    const low = s.toLowerCase();
+                    return low && 
+                           low !== rawWord.toLowerCase() && 
+                           !blacklistSynonyms.includes(low) && 
+                           !low.includes('related term');
+                })
                 .slice(0, 4);
 
             let meaningVi = await translateTextAuto(rawWord) || "Nghĩa tiếng Việt";
@@ -1589,7 +1598,7 @@
             regBadge.className = `register-badge reg-${currentPendingAIWord.register.toLowerCase()}`;
 
             document.getElementById('prev-meaning').innerText = currentPendingAIWord.meaningVi;
-            document.getElementById('prev-synonyms').innerText = currentPendingAIWord.synonyms.length > 0 ? currentPendingAIWord.synonyms.join(', ') : 'Không có';
+            document.getElementById('prev-synonyms').innerText = currentPendingAIWord.synonyms.length > 0 ? currentPendingAIWord.synonyms.join(', ') : 'Không có từ đồng nghĩa';
 
             let colloHTML = '';
             currentPendingAIWord.collocations.forEach(c => {
@@ -1689,7 +1698,7 @@
         const memScore = calculateMemoryScore(item);
         const dueToday = isDue(item.nextReview);
 
-        let synonymChipsHTML = (item.synonyms || []).map(s => `<span class="synonym-chip">≈ ${s}</span>`).join('');
+        let synonymChipsHTML = (item.synonyms && item.synonyms.length > 0) ? item.synonyms.map(s => `<span class="synonym-chip">≈ ${s}</span>`).join('') : '';
         
         let collocationsHTML = '';
         if (item.collocations && item.collocations.length > 0) {
