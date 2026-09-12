@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Magic English Vocab — Học Từ Vựng Kỳ Diệu 🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           OCEAN MAGICAL & CUTE MASCOT THEME (DESIGNED BY SENIOR UX/FRONT-END)
+           ========================================================================== */
+        :root {
+            /* OCEAN & SKY COLOR PALETTE */
+            --ocean-dark: #0077B6;
+            --ocean-main: #0096C7;
+            --ocean-light: #00B4D8;
+            --sky-blue: #48CAE4;
+            --glacier-cyan: #90E0EF;
+            --ice-foam: #E0F7FA;
+            --magic-purple: #9D4EDD;
+            --magic-pink: #FF85A1;
+            --star-gold: #FFD166;
+            --mint-green: #2EC4B6;
+            --soft-mint: #E8FCCF;
+            
+            /* GLASSMORPHISM & TEXT */
+            --card-glass: rgba(255, 255, 255, 0.82);
+            --card-glass-glow: rgba(144, 224, 239, 0.4);
+            --text-main: #0B2545;
+            --text-sub: #486581;
+            --border-magic: rgba(72, 202, 228, 0.45);
+            
+            /* SHADOWS & RADIUS */
+            --shadow-magical: 0 12px 35px rgba(0, 119, 182, 0.18), 0 0 25px rgba(144, 224, 239, 0.35);
+            --shadow-hover: 0 16px 40px rgba(0, 150, 199, 0.3), 0 0 30px rgba(255, 209, 102, 0.5);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 12px;
+        }
+
+        * { box-sizing: border-box; font-family: 'Nunito', -apple-system, sans-serif; margin: 0; padding: 0; }
+        
+        /* BACKGROUND & FLOATING MASCOTS */
+        body {
+            background: linear-gradient(135deg, #A2D2FF 0%, #C8B6FF 35%, #B8C0FF 65%, #E7C6FF 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            padding: 24px 16px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            transition: opacity ease-in 0.2s;
+        }
+
+        /* FLOATING MAGICAL MASCOTS IN BACKGROUND */
+        body::before {
+            content: "🦄";
+            position: fixed;
+            top: 40px;
+            left: 20px;
+            font-size: 55px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+            animation: floatMascot 6s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: "🐱🌈";
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            font-size: 50px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+            animation: floatMascot 7s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatMascot {
+            0% { transform: translateY(0px) rotate(-5deg) scale(1); }
+            50% { transform: translateY(-20px) rotate(5deg) scale(1.08); }
+            100% { transform: translateY(-10px) rotate(-3deg) scale(1.02); }
+        }
+
+        /* MAIN GLASS CONTAINER */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1550px;
+            margin: 0 auto;
+            background: var(--card-glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 32px;
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: var(--shadow-magical), inset 0 0 20px rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== ACTIVE RECALL BLUR EFFECT ===== */
+        .blur-word {
+            filter: blur(7px);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            user-select: none;
+            border-radius: 8px;
+            background: rgba(144, 224, 239, 0.25);
+            padding: 2px 8px;
+            display: inline-block;
+        }
+
+        .blur-word:hover, .blur-word.revealed {
+            filter: blur(0) !important;
+            user-select: auto;
+            background: rgba(255, 209, 102, 0.3);
+            box-shadow: 0 0 12px rgba(255, 209, 102, 0.6);
+        }
+
+        /* ===== FLOATING ACTION BUTTON ===== */
+        .floating-add-btn {
+            position: absolute;
+            z-index: 10000;
+            background: linear-gradient(135deg, #00B4D8, #9D4EDD);
+            color: white;
+            border: 2px solid #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.4), 0 0 15px rgba(255, 209, 102, 0.6);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: popUp 0.25s ease-out;
+        }
+
+        .floating-add-btn:hover {
+            transform: scale(1.1) rotate(2deg);
+            background: linear-gradient(135deg, #0077B6, #FF85A1);
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.8) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* ===== HEADER & ACTION BAR ===== */
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .title-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-group h1 {
+            font-size: 32px;
+            font-weight: 900;
+            background: linear-gradient(45deg, #0077B6, #00B4D8, #9D4EDD);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .title-group h1::after {
+            content: "🐬";
+            font-size: 28px;
+            -webkit-text-fill-color: initial;
+            animation: floatMascot 4s ease-in-out infinite;
+        }
+
+        .sparkle-badge {
+            background: linear-gradient(135deg, #FFD166, #FF85A1);
+            color: #0B2545;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 900;
+            box-shadow: 0 4px 15px rgba(255, 209, 102, 0.5);
+            animation: pulse-magic 2s infinite ease-in-out;
+            border: 2px solid #FFFFFF;
+        }
+
+        @keyframes pulse-magic {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 209, 102, 0.5); }
+            50% { transform: scale(1.06); box-shadow: 0 6px 22px rgba(255, 209, 102, 0.8), 0 0 15px rgba(72, 202, 228, 0.6); }
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== BUTTON STYLES ===== */
+        .btn {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-main-review {
+            background: linear-gradient(135deg, #0096C7, #9D4EDD);
+            color: white;
+            font-size: 16px;
+            padding: 14px 28px;
+            box-shadow: 0 8px 25px rgba(0, 150, 199, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-main-review::before {
+            content: "✨";
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .btn-ai-add {
+            background: linear-gradient(135deg, #00B4D8, #FFD166);
+            color: #0B2545;
+            border: 2px solid #FFFFFF;
+        }
+
+        .btn-sub {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-main);
+            border: 2px solid var(--glacier-cyan);
+        }
+
+        .btn-sub:hover {
+            background: var(--ice-foam);
+            border-color: var(--ocean-light);
+        }
+
+        /* ===== DAILY GOAL TRACKER ===== */
+        .daily-bar {
+            background: linear-gradient(135deg, rgba(224, 247, 250, 0.9), rgba(200, 182, 255, 0.4));
+            border: 2px dashed #48CAE4;
+            border-radius: var(--radius-md);
+            padding: 18px 24px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.8);
+            position: relative;
+        }
+
+        .daily-bar::after {
+            content: "🪼";
+            position: absolute;
+            right: -10px;
+            top: -15px;
+            font-size: 26px;
+        }
+
+        .daily-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            font-weight: 800;
+            font-size: 15px;
+            color: #0B2545;
+        }
+
+        .daily-progress-bg {
+            flex: 1;
+            max-width: 320px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--sky-blue);
+            padding: 2px;
+        }
+
+        .daily-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #48CAE4, #2EC4B6, #FFD166);
+            border-radius: 20px;
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 10px rgba(72, 202, 228, 0.8);
+        }
+
+        /* ===== ADD WORD AREA ===== */
+        .add-word-card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid var(--sky-blue);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-magical);
+            position: relative;
+        }
+
+        .add-word-card::before {
+            content: "🪄";
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            font-size: 22px;
+            background: #FFFFFF;
+            padding: 0 6px;
+            border-radius: 10px;
+        }
+
+        .add-word-title {
+            font-size: 17px;
+            font-weight: 900;
+            color: var(--ocean-dark);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-input-group {
+            display: flex;
+            gap: 14px;
+            position: relative;
+        }
+
+        input[type="text"], select.custom-select {
+            flex: 1;
+            padding: 14px 22px;
+            border: 2px solid var(--glacier-cyan);
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 800;
+            outline: none;
+            transition: all 0.25s;
+            background: rgba(240, 248, 255, 0.6);
+            color: var(--text-main);
+        }
+
+        input[type="text"]:focus, select.custom-select:focus {
+            border-color: var(--ocean-main);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 5px rgba(72, 202, 228, 0.25);
+        }
+
+        /* AI PREVIEW CARD */
+        .ai-preview-card {
+            display: none;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #E0F7FA, #FFFFFF);
+            border: 2px solid var(--ocean-light);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            animation: fadeIn 0.35s ease-in-out;
+            box-shadow: 0 10px 25px rgba(0, 180, 216, 0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-word-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .ai-word-name { font-size: 26px; font-weight: 900; color: var(--ocean-dark); }
+        .ai-ipa { font-size: 15px; font-weight: 800; color: var(--magic-purple); background: rgba(200, 182, 255, 0.4); padding: 5px 12px; border-radius: 20px; }
+        .ai-pos { font-size: 12px; font-weight: 900; text-transform: uppercase; background: var(--soft-mint); color: #15803D; padding: 5px 12px; border-radius: 20px; }
+
+        .ai-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .ai-detail-box {
+            background: rgba(255,255,255,0.95);
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--sky-blue);
+            box-shadow: 0 4px 10px rgba(0,119,182,0.05);
+        }
+
+        .ai-detail-title { font-size: 11px; font-weight: 900; color: var(--text-sub); text-transform: uppercase; margin-bottom: 6px; }
+
+        /* BADGES & TAGS */
+        .register-badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; margin-left: 6px; }
+        .reg-academic { background: #E0F2FE; color: #0369A1; }
+        .reg-formal { background: #F3E8FF; color: #6B21A8; }
+        .reg-informal { background: #FEF3C7; color: #92400E; }
+
+        .topic-tag { display: inline-block; background: var(--ice-foam); color: var(--ocean-dark); font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; margin-right: 4px; margin-top: 6px; border: 1px solid var(--sky-blue); }
+
+        /* ===== TABLE STYLES ===== */
+        .table-section-title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--ocean-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-filter-bar {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-filter-bar input { flex: 1; min-width: 220px; }
+        .search-filter-bar select {
+            padding: 12px 20px;
+            border: 2px solid var(--glacier-cyan);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 800;
+            outline: none;
+            background: #FFFFFF;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--sky-blue);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-magical);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            min-width: 1250px;
+        }
+
+        th {
+            background: linear-gradient(135deg, #0077B6, #0096C7);
+            color: #FFFFFF;
+            padding: 16px;
+            font-weight: 900;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 3px solid var(--sky-blue);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #E0F2FE;
+            vertical-align: top;
+        }
+
+        tr:hover { background-color: rgba(224, 247, 250, 0.6); }
+        tr.due-row { background-color: rgba(255, 235, 238, 0.6) !important; }
+        tr.due-row td:first-child { border-left: 6px solid #FF4D6D; }
+
+        .word-cell { font-size: 18px; font-weight: 900; color: #0077B6; }
+        .ipa-tag { font-size: 13px; font-weight: 800; color: var(--magic-purple); font-family: monospace; }
+        .speaker-btn { background: none; border: none; cursor: pointer; font-size: 18px; margin-left: 6px; transition: transform 0.2s; }
+        .speaker-btn:hover { transform: scale(1.3) rotate(10deg); }
+
+        .synonym-chip { display: inline-block; background: #E0F2FE; color: #0284C7; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 12px; margin-top: 4px; margin-right: 4px; border: 1px solid #BAE6FD; }
+        
+        .collo-box { margin-top: 10px; font-size: 12px; background: rgba(224, 247, 250, 0.8); padding: 10px 12px; border-radius: 14px; border: 1px solid #90E0EF; }
+        .collo-item { margin-top: 6px; }
+        .collo-item:first-child { margin-top: 0; }
+        .collo-phrase { font-weight: 900; color: #0077B6; }
+        .collo-ex { font-size: 11px; color: #334155; font-style: italic; display: inline-block; margin-top: 2px; }
+
+        .pos-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+        .pos-noun { background: #E0F2FE; color: #0369A1; }
+        .pos-verb { background: #DCFCE7; color: #15803D; }
+        .pos-adj { background: #FEF3C7; color: #B45309; }
+        .pos-adv { background: #FCE7F3; color: #BE185D; }
+        .pos-other { background: #F1F5F9; color: #475569; }
+
+        .practice-input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid var(--glacier-cyan);
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 800;
+            outline: none;
+            transition: all 0.2s ease;
+            background: #FFFFFF;
+        }
+
+        .practice-input:focus { border-color: var(--ocean-main); box-shadow: 0 0 0 3px rgba(72, 202, 228, 0.3); }
+
+        .practice-input:disabled {
+            background-color: #F1F5F9;
+            color: #94A3B8;
+            cursor: not-allowed;
+            border-color: #E2E8F0;
+        }
+
+        .practice-input.correct { border-color: #38B000; background-color: #E8FCCF; color: #15803D; }
+        .practice-input.incorrect { border-color: #FF4D6D; background-color: #FFF0F3; color: #B91C1C; }
+
+        .status-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-weight: 900; font-size: 11px; }
+        .badge-true { background: #DCFCE7; color: #15803D; }
+        .badge-false { background: #FEE2E2; color: #B91C1C; }
+        .badge-pending { background: #E0F7FA; color: #0077B6; }
+        .badge-locked { background: #E2E8F0; color: #64748B; }
+
+        .next-review-tag {
+            font-size: 12px;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .tag-due-today { background: #FFE5EC; color: #FF2E63; border: 1px solid #FF7597; }
+        .tag-future { background: #E0F2FE; color: #0284C7; border: 1px solid #BAE6FD; }
+
+        .progress-bar-bg { width: 100%; background: #E2E8F0; border-radius: 10px; height: 10px; overflow: hidden; margin: 6px 0; }
+        .progress-bar-fill { height: 100%; border-radius: 10px; transition: width 0.4s ease; }
+
+        .mem-tag { display: inline-block; font-size: 11px; font-weight: 900; padding: 4px 10px; border-radius: 12px; margin-top: 4px; }
+        .mem-tag-low { background: #FEE2E2; color: #991B1B; } 
+        .mem-tag-mid { background: #FEF3C7; color: #92400E; } 
+        .mem-tag-good { background: #DCFCE7; color: #166534; } 
+        .mem-tag-master { background: #F3E8FF; color: #6B21A8; box-shadow: 0 0 10px rgba(157, 78, 221, 0.4); } 
+
+        .example-box { font-size: 14px; max-width: 360px; line-height: 1.5; }
+        .highlight-word { color: #0077B6; font-weight: 900; background: rgba(144, 224, 239, 0.3); padding: 1px 6px; border-radius: 6px; }
+        .trans-btn { background: var(--ice-foam); color: var(--ocean-dark); border: 1px solid var(--sky-blue); padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 800; cursor: pointer; margin-left: 6px; }
+        .trans-btn:hover { background: var(--sky-blue); color: white; }
+        .trans-text { display: none; margin-top: 6px; font-size: 12px; color: #0077B6; background: rgba(224, 247, 250, 0.9); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--sky-blue); }
+
+        .delete-btn { color: #94A3B8; background: none; border: none; cursor: pointer; font-size: 20px; transition: color 0.2s; }
+        .delete-btn:hover { color: #FF4D6D; transform: scale(1.2); }
+
+        /* SPEED CONTROLLER UI */
+        .speed-control-bar { display: inline-flex; gap: 4px; background: #E0F2FE; padding: 3px 8px; border-radius: 20px; margin-left: 8px; border: 1px solid #BAE6FD; }
+        .speed-btn { border: none; background: transparent; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 10px; cursor: pointer; color: #0369A1; }
+        .speed-btn.active { background: #0096C7; color: white; box-shadow: 0 2px 6px rgba(0, 150, 199, 0.4); }
+
+        /* ===== MODAL & OVERLAY ===== */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(11, 37, 69, 0.6);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 16px;
+        }
+
+        .modal {
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            width: min(640px, 100%);
+            box-shadow: 0 25px 60px rgba(0, 119, 182, 0.35), 0 0 30px rgba(144, 224, 239, 0.5);
+            border: 3px solid var(--sky-blue);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal::before {
+            content: "🔮";
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            font-size: 30px;
+        }
+
+        .modal-close-x {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            background: #E0F7FA;
+            color: var(--ocean-dark);
+            border: 2px solid var(--sky-blue);
+            font-size: 18px;
+            font-weight: 900;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close-x:hover {
+            background: #FF4D6D;
+            color: white;
+            border-color: #FF4D6D;
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .modal h2 { font-size: 24px; font-weight: 900; color: var(--ocean-dark); margin-bottom: 12px; padding-left: 36px; }
+
+        /* REVIEW MODAL SPECIFIC */
+        .review-modal { text-align: center; }
+        .review-progress-bar { height: 10px; background: #E0F2FE; border-radius: 10px; overflow: hidden; margin-bottom: 16px; border: 1px solid var(--sky-blue); }
+        .review-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #48CAE4, #0096C7, #9D4EDD); transition: width 0.4s; }
+        .review-counter { font-size: 14px; font-weight: 900; color: var(--text-sub); }
+        
+        .mode-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0096C7, #9D4EDD);
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 12px rgba(0, 150, 199, 0.3);
+        }
+
+        .review-prompt {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--text-main);
+            margin: 24px 0 20px;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .review-input-box {
+            font-size: 18px !important;
+            text-align: center;
+            padding: 16px !important;
+            margin-bottom: 18px;
+            border-radius: 50px !important;
+            border: 3px solid var(--sky-blue) !important;
+            box-shadow: 0 6px 20px rgba(72, 202, 228, 0.2);
+        }
+
+        .review-input-box[readonly] {
+            background-color: #F8FAFC !important;
+            cursor: default;
+        }
+
+        .review-feedback { font-size: 16px; font-weight: 900; min-height: 32px; margin-bottom: 10px; }
+        .review-good { color: #38B000; }
+        .review-bad { color: #FF4D6D; }
+        .review-warn { color: #D97706; }
+        .review-answer-hint { font-size: 15px; font-weight: 800; color: var(--magic-purple); margin-bottom: 18px; }
+
+        .review-action-group {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* TOAST NOTIFICATION */
+        .toast {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #0B2545;
+            color: white;
+            padding: 14px 26px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 14px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25), 0 0 15px rgba(72, 202, 228, 0.5);
+            border: 2px solid var(--sky-blue);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show { opacity: 1; transform: translateY(0); }
+
+        .hidden { display: none !important; }
+
+        /* LOADING SPINNER */
+        .loading-spinner { display: none; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 800; color: var(--ocean-dark); margin-top: 12px; }
+        .spinner { width: 20px; height: 20px; border: 3px solid #E0F7FA; border-top-color: var(--ocean-main); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* RESPONSIVE CARD VIEW FOR MOBILE */
+        @media (max-width: 850px) {
+            .container { padding: 18px; }
+            .header-bar { flex-direction: column; align-items: flex-start; }
+            .header-actions { width: 100%; }
+            .header-actions .btn { flex: 1; }
+            
+            table, thead, tbody, th, td, tr { display: block; }
+            thead { display: none; }
+            tr {
+                margin-bottom: 18px;
+                border: 2px solid var(--sky-blue);
+                border-radius: var(--radius-md);
+                padding: 14px;
+                background: #FFFFFF;
+                box-shadow: 0 4px 15px rgba(0,119,182,0.08);
+            }
+            td {
+                border: none;
+                padding: 8px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            td::before {
+                content: attr(data-label);
+                font-weight: 900;
+                font-size: 12px;
+                color: var(--text-sub);
+                text-transform: uppercase;
+                margin-right: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- FLOATING TOOLTIP WHEN HIGHLIGHTING TEXT -->
+<button id="floating-add-btn" class="floating-add-btn" onclick="addSelectedTextToInput()" style="display: none;">
+    ✨ Thêm từ: <strong id="selected-word-label">word</strong>
+</button>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header-bar">
+        <div class="title-group">
+            <h1>Magic Vocab Pro</h1>
+            <span class="sparkle-badge">Cognitive SRS &amp; AI Co-pilot</span>
+        </div>
+        <div class="header-actions">
+            <button id="toggle-hide-btn" class="btn btn-sub" onclick="toggleHideOriginalMode()">🙈 Che từ gốc: ĐANG BẬT</button>
+            <button class="btn btn-main-review" onclick="startSmartReview()">🧠 Bắt đầu ôn ngay</button>
+            <button class="btn btn-sub" onclick="openStats()">📊 Thống kê</button>
+        </div>
+    </div>
+
+    <!-- DAILY GOAL TRACKER -->
+    <div class="daily-bar">
+        <div class="daily-info">
+            <span>🎯 Tiến trình hôm nay:</span>
+            <span>Cần ôn: <strong id="daily-due-count" style="color:#FF4D6D;">0</strong> từ</span>
+            <span>Đã hoàn thành: <strong id="daily-done-count" style="color:#38B000;">0</strong></span>
+        </div>
+        <div class="daily-progress-bg">
+            <div id="daily-progress-fill" class="daily-progress-fill" style="width: 0%;"></div>
+        </div>
+    </div>
+
+    <!-- ADD WORD SECTION -->
+    <div class="add-word-card">
+        <div class="add-word-title">Nhập từ mới (Tự động tra nghĩa, phiên âm, ví dụ &amp; collocations)</div>
+        <div class="add-input-group">
+            <input type="text" id="ai-word-input" placeholder="Nhập từ hoặc bôi đen từ trên màn hình..." onkeydown="if(event.key==='Enter') generateWordDataAuto()">
+            <button class="btn btn-ai-add" onclick="generateWordDataAuto()">✨ Tự động tạo thông tin</button>
+        </div>
+        <div class="loading-spinner" id="ai-loading" style="display: none;">
+            <div class="spinner"></div> Hệ thống đang tra cứu từ điển &amp; phân tích AI tự động...
+        </div>
+
+        <!-- AI PREVIEW CARD -->
+        <div id="ai-preview" class="ai-preview-card" style="display: none;">
+            <div class="ai-word-header">
+                <span class="ai-word-name" id="prev-word">obligate</span>
+                <span class="ai-ipa" id="prev-ipa">/ˈɒb.lɪ.ɡeɪt/</span>
+                <span class="ai-pos" id="prev-pos">WORD</span>
+                <span id="prev-register" class="register-badge reg-academic">Academic</span>
+            </div>
+            <div class="ai-details-grid">
+                <div class="ai-detail-box">
+                    <div class="ai-detail-title">Nghĩa tiếng Việt</div>
+                    <div id="prev-meaning" style="font-weight: 800; color: #2D3142;">Bắt buộc, phụ thuộc</div>
+                </div>
+                <div class="ai-detail-box">
+                    <div class="ai-detail-title">Đồng nghĩa</div>
+                    <div id="prev-synonyms" style="color: var(--magic-purple); font-weight: 700;">related term</div>
+                </div>
+                <div class="ai-detail-box">
+                    <div class="ai-detail-title">Collocations &amp; Ví dụ</div>
+                    <div id="prev-collocations" style="font-size: 12px; color: #0284C7;"></div>
+                </div>
+                <div class="ai-detail-box">
+                    <div class="ai-detail-title">Ví dụ minh họa</div>
+                    <div id="prev-example" style="font-style: italic;">It is essential to understand how to use obligate correctly.</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-sub" onclick="editPreviewData()">✏️ Chỉnh sửa nghĩa</button>
+                <button class="btn btn-main-review" style="font-size: 14px; padding: 8px 20px;" onclick="confirmAddWord()">✓ Thêm vào danh sách học</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- URGENT DUE TODAY SECTION -->
+    <div id="urgent-section" style="margin-bottom: 28px; display: block;">
+        <div class="table-section-title" style="color: #FF4D6D;">
+            🔥 Những từ cần ôn hôm nay <span id="urgent-count-tag" style="background:#FF4D6D; color:white; padding: 2px 10px; border-radius: 20px; font-size: 12px;">0 từ</span>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">#</th>
+                        <th style="width: 260px;">TỪ GỐC, ĐỒNG NGHĨA &amp; COLLOCATION</th>
+                        <th style="width: 80px;">TỪ LOẠI</th>
+                        <th style="width: 180px;">NGHĨA TIẾNG VIỆT</th>
+                        <th style="width: 150px;">ÔN TẬP</th>
+                        <th style="width: 80px;">CHECK</th>
+                        <th style="width: 140px;">LỊCH ÔN TIẾP THEO</th>
+                        <th style="width: 150px;">ĐỘ THUỘC (%)</th>
+                        <th>VÍ DỤ MINH HỌA</th>
+                    </tr>
+                </thead>
+                <tbody id="urgent-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MAIN VOCAB TABLE -->
+    <div class="table-section-title">
+        📚 Toàn bộ bảng từ vựng
+    </div>
+    <div class="search-filter-bar">
+        <input type="text" id="search-input" placeholder="🔎 Tìm từ, nghĩa, đồng nghĩa, tag chủ đề..." oninput="renderTables()">
+        <select id="filter-select" onchange="renderTables()">
+            <option value="all">Tất cả từ vựng</option>
+            <option value="due">🔴 Cần ôn hôm nay</option>
+            <option value="learning">🟡 Đang học</option>
+            <option value="mastered">🟢 Đã thuộc lòng (100%)</option>
+        </select>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40px;">#</th>
+                    <th style="width: 260px;">TỪ GỐC, ĐỒNG NGHĨA &amp; COLLOCATION</th>
+                    <th style="width: 80px;">TỪ LOẠI</th>
+                    <th style="width: 180px;">NGHĨA TIẾNG VIỆT</th>
+                    <th style="width: 150px;">ÔN TẬP</th>
+                    <th style="width: 80px;">CHECK</th>
+                    <th style="width: 140px;">LỊCH ÔN TIẾP THEO</th>
+                    <th style="width: 150px;">ĐỘ THUỘC (%)</th>
+                    <th>VÍ DỤ MINH HỌA</th>
+                    <th style="width: 40px;"></th>
+                </tr>
+            </thead>
+            <tbody id="main-table-body">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- MODAL: STATS -->
+<div id="stats-modal" class="modal-backdrop">
+    <div class="modal">
+        <button class="modal-close-x" onclick="closeStats()">✕</button>
+        <h2>📊 Thống kê hành trình học</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0;">
+            <div style="background: var(--ice-foam); padding: 16px; border-radius: var(--radius-sm); text-align: center; border:1px solid var(--sky-blue);">
+                <div style="font-size: 11px; font-weight: 800; color: var(--text-sub);">TỔNG TỪ VỰNG</div>
+                <div id="stat-total-words" style="font-size: 26px; font-weight: 900; color: var(--ocean-dark);">0</div>
+            </div>
+            <div style="background: rgba(200, 182, 255, 0.3); padding: 16px; border-radius: var(--radius-sm); text-align: center; border:1px solid #C8B6FF;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--text-sub);">ĐÃ THUỘC LÒNG</div>
+                <div id="stat-mastered-words" style="font-size: 26px; font-weight: 900; color: var(--magic-purple);">0</div>
+            </div>
+            <div style="background: var(--soft-mint); padding: 16px; border-radius: var(--radius-sm); text-align: center; border:1px solid #2EC4B6;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--text-sub);">ĐỘ CHÍNH XÁC</div>
+                <div id="stat-accuracy" style="font-size: 26px; font-weight: 900; color: #15803D;">0%</div>
+            </div>
+            <div style="background: #FEF9C3; padding: 16px; border-radius: var(--radius-sm); text-align: center; border:1px solid #FFD166;">
+                <div style="font-size: 11px; font-weight: 800; color: var(--text-sub);">SỐ LẦN ÔN TẬP</div>
+                <div id="stat-total-reviews" style="font-size: 26px; font-weight: 900; color: #B45309;">0</div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+            <button class="btn btn-sub" onclick="closeStats()">Đóng</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: SMART REVIEW -->
+<div id="review-modal" class="modal-backdrop">
+    <div class="modal review-modal">
+        <button class="modal-close-x" title="Thoát bài ôn" onclick="closeReview()">✕</button>
+
+        <div class="review-progress-bar"><div id="review-progress-fill" class="review-progress-fill"></div></div>
+        
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+            <div id="review-counter" class="review-counter">1 / 10</div>
+            <div id="review-mode-badge" class="mode-badge">🎯 RECALL MODE</div>
+        </div>
+        
+        <div id="review-prompt" class="review-prompt">Luyện tập từ vựng</div>
+        
+        <div style="margin-bottom: 12px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+            <button id="review-audio-btn" class="speaker-btn hidden" style="font-size: 28px;" onclick="playReviewAudio()">🔊 Nghe lại</button>
+            <div class="speed-control-bar" id="speed-controls">
+                <button class="speed-btn" onclick="setAudioSpeed(0.8)">0.8x</button>
+                <button class="speed-btn active" onclick="setAudioSpeed(1.0)">1.0x</button>
+                <button class="speed-btn" onclick="setAudioSpeed(1.25)">1.25x</button>
+            </div>
+        </div>
+        
+        <input type="text" id="review-input" class="review-input-box" placeholder="Nhập câu trả lời rồi bấm ENTER..." onkeydown="if(event.key==='Enter') handleReviewEnter()">
+        
+        <div class="loading-spinner" id="review-ai-checking" style="margin-bottom: 12px;">
+            <div class="spinner"></div> 🤖 AI đang phân tích &amp; kiểm tra ngữ cảnh...
+        </div>
+
+        <div id="review-feedback" class="review-feedback"></div>
+        <div id="review-answer-hint" class="review-answer-hint"></div>
+        
+        <div class="review-action-group">
+            <button id="review-check-btn" class="btn btn-main-review" onclick="checkSmartReview()">KIỂM TRA (ENTER)</button>
+            <button id="review-retry-btn" class="btn btn-sub hidden" onclick="retrySmartReview()">🔄 Thử nhập lại</button>
+            <button id="review-skip-btn" class="btn btn-sub hidden" style="color:#FF4D6D; border-color:#FFD6E0;" onclick="skipSmartReview()">⏭️ Bỏ qua &amp; Xem đáp án</button>
+            <button id="review-next-btn" class="btn btn-ai-add hidden" onclick="nextSmartReview()">TIẾP TỤC (ENTER) →</button>
+            <button id="review-close-btn" class="btn btn-sub hidden" onclick="closeReview()">ĐÓNG / HOÀN THÀNH</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">🌸 Đã thêm từ mới vào bảng học!</div>
+
+<script>
+    /* ===== OVERRIDE DICTIONARY DỊCH CHUẨN ===== */
+    const OVERRIDE_DICT = {
+        "pipeline": "quy trình / hệ thống xử lý",
+        "allocate": "phân bổ, cấp phát",
+        "resilient": "kiên cường, linh hoạt",
+        "abide by": "tuân thủ, làm theo",
+        "framework": "khung làm việc, khuôn mẫu",
+        "deployment": "triển khai",
+        "obligate": "bắt buộc, có nghĩa vụ"
+    };
+
+    /* ===== INITIAL VOCABULARY SEED DATA ===== */
+    const initialVocab = [
+        {
+            id: 1,
+            word: "allocate",
+            ipa: "/ˈæl.ə.keɪt/",
+            pos: "verb",
+            meaningVi: "phân bổ, cấp phát",
+            synonyms: ["assign", "distribute", "grant"],
+            collocations: [
+                { 
+                    phrase: "allocate resources", 
+                    example: "The team must allocate resources efficiently.",
+                    exampleVi: "Nhóm phải phân bổ nguồn lực một cách hiệu quả." 
+                },
+                { 
+                    phrase: "allocate budget", 
+                    example: "They allocated a large budget for research.",
+                    exampleVi: "Họ đã phân bổ một khoản ngân sách lớn cho việc nghiên cứu." 
+                }
+            ],
+            example: "The company needs to allocate its resources wisely.",
+            exampleVi: "Công ty cần phân bổ nguồn lực một cách hợp lý.",
+            correctCount: 0,
+            wrongCount: 0,
+            level: 0,
+            nextReview: new Date().toISOString().split('T')[0],
+            register: "Academic",
+            tags: ["Business", "Work"],
+            difficulty: "medium"
+        },
+        {
+            id: 2,
+            word: "abide by",
+            ipa: "/əˈbaɪd baɪ/",
+            pos: "verb",
+            meaningVi: "tuân theo, tôn trọng (luật/quy định)",
+            synonyms: ["comply with", "adhere to", "follow", "obey"],
+            collocations: [
+                { 
+                    phrase: "abide by the rules", 
+                    example: "All members must abide by the rules.",
+                    exampleVi: "Tất cả các thành viên phải tuân theo các quy tắc." 
+                },
+                { 
+                    phrase: "abide by the decision", 
+                    example: "We agree to abide by the judge's decision.",
+                    exampleVi: "Chúng tôi đồng ý tuân theo quyết định của thẩm phán." 
+                }
+            ],
+            example: "All members must abide by the organization's regulations.",
+            exampleVi: "Tất cả thành viên phải tuân theo các quy định của tổ chức.",
+            correctCount: 0,
+            wrongCount: 0,
+            level: 0,
+            nextReview: new Date().toISOString().split('T')[0],
+            register: "Formal",
+            tags: ["Law", "General"],
+            difficulty: "medium"
+        },
+        {
+            id: 3,
+            word: "resilient",
+            ipa: "/rɪˈzɪl.i.ənt/",
+            pos: "adjective",
+            meaningVi: "kiên cường, có khả năng phục hồi nhanh",
+            synonyms: ["adaptable", "tough", "flexible"],
+            collocations: [
+                { 
+                    phrase: "resilient system", 
+                    example: "Building a resilient system prevents downtime.",
+                    exampleVi: "Xây dựng hệ thống có khả năng phục hồi tốt giúp tránh thời gian ngừng hoạt động." 
+                },
+                { 
+                    phrase: "resilient economy", 
+                    example: "The country has a remarkably resilient economy.",
+                    exampleVi: "Đất nước có một nền kinh tế phục hồi mạnh mẽ đáng kinh ngạc." 
+                }
+            ],
+            example: "The new cloud infrastructure is highly resilient against cyber attacks.",
+            exampleVi: "Hạ tầng đám mây mới có khả năng chống chịu cao trước các cuộc tấn công mạng.",
+            correctCount: 0,
+            wrongCount: 0,
+            level: 0,
+            nextReview: new Date().toISOString().split('T')[0],
+            register: "Academic",
+            tags: ["Tech", "Personal"],
+            difficulty: "medium"
+        }
+    ];
+
+    /* ===== STATE MANAGEMENT ===== */
+    const STORAGE_KEY = 'magic_vocab_pro_data';
+    let hideOriginalWordMode = true; 
+    let inlineAttemptsMap = {}; 
+    let reviewWrongAttempts = 0;
+    let currentAudioSpeed = 1.0;
+
+    /* NORMALIZE COLLOCATIONS STRUCTURE */
+    function normalizeCollocations(collocations) {
+        if (!Array.isArray(collocations)) return [];
+        return collocations.map(item => {
+            if (typeof item === 'string') {
+                return { phrase: item, example: '', exampleVi: '' };
+            }
+            return {
+                phrase: item.phrase || '',
+                example: item.example || '',
+                exampleVi: item.exampleVi || ''
+            };
+        });
+    }
+
+    /* DATA MIGRATION & SANITIZATION */
+    function migrateData(list) {
+        return list.map(item => ({
+            ...item,
+            collocations: normalizeCollocations(item.collocations),
+            difficulty: item.difficulty || 'medium',
+            correctCount: item.correctCount || 0,
+            wrongCount: item.wrongCount || 0,
+            level: item.level || 0,
+            nextReview: item.nextReview || getTodayStr()
+        }));
+    }
+
+    let vocabList = [];
+
+    function loadData() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                vocabList = migrateData(JSON.parse(stored));
+            } catch (e) {
+                vocabList = migrateData(initialVocab);
+            }
+        } else {
+            vocabList = migrateData(initialVocab);
+            saveData();
+        }
+    }
+
+    function saveData() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(vocabList));
+    }
+
+    let currentPendingAIWord = null;
+    let reviewQueue = [];
+    let reviewIndex = 0;
+    let reviewAnswered = false;
+    let currentReviewItem = null;
+    let currentReviewMode = 'RECALL';
+    let currentSelectedText = "";
+
+    /* ===== HELPERS ===== */
+    function getTodayStr() {
+        return new Date().toISOString().split('T')[0];
+    }
+
+    function isDue(nextReviewDateStr) {
+        if (!nextReviewDateStr) return true;
+        return nextReviewDateStr <= getTodayStr();
+    }
+
+    function formatDateDisplay(dateStr) {
+        if (!dateStr) return "Hôm nay";
+        if (dateStr <= getTodayStr()) return "🔥 Hôm nay";
+        const parts = dateStr.split('-');
+        if (parts.length === 3) return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        return dateStr;
+    }
+
+    function toast(msg) {
+        const t = document.getElementById('toast');
+        t.innerHTML = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    function setAudioSpeed(speed) {
+        currentAudioSpeed = speed;
+        document.querySelectorAll('#speed-controls .speed-btn').forEach(btn => {
+            btn.classList.toggle('active', parseFloat(btn.textContent) === speed);
+        });
+    }
+
+    function speak(text) {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-US';
+        u.rate = currentAudioSpeed || 1.0;
+        window.speechSynthesis.speak(u);
+    }
+
+    function toggleTrans(id) {
+        const el = document.getElementById(`trans-${id}`);
+        if (el) el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function toggleHideOriginalMode() {
+        hideOriginalWordMode = !hideOriginalWordMode;
+        const btn = document.getElementById('toggle-hide-btn');
+        if (hideOriginalWordMode) {
+            btn.innerHTML = "🙈 Che từ gốc: ĐANG BẬT";
+            btn.classList.remove('btn-main-review');
+            btn.classList.add('btn-sub');
+        } else {
+            btn.innerHTML = "👁️ Che từ gốc: ĐANG TẮT";
+            btn.classList.remove('btn-sub');
+            btn.classList.add('btn-main-review');
+        }
+        renderTables();
+    }
+
+    function maskWordInText(text, word) {
+        if (!text || !word) return text;
+        if (!hideOriginalWordMode) return text.replace(new RegExp(`\\b(${word})\\b`, 'gi'), `<span class="highlight-word">$1</span>`);
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+        return text.replace(regex, `<span class="blur-word" title="Bấm để xem từ gốc" onclick="this.classList.toggle('revealed')">$1</span>`);
+    }
+
+    function maskWordInTextForce(text, word) {
+        if (!text || !word) return text;
+        const regex = new RegExp(`\\b(${word})\\b`, 'gi');
+        return text.replace(regex, `<span class="blur-word" title="Bấm để xem từ gốc" onclick="this.classList.toggle('revealed')">$1</span>`);
+    }
+
+    /* ===== TEXT SELECTION TOOLTIP ===== */
+    document.addEventListener('mouseup', handleTextSelection);
+
+    function handleTextSelection(e) {
+        const selectedText = window.getSelection().toString().trim();
+        const floatBtn = document.getElementById('floating-add-btn');
+        if (selectedText.length > 1 && selectedText.length < 35 && !e.target.closest('#floating-add-btn') && !e.target.closest('input')) {
+            currentSelectedText = selectedText;
+            document.getElementById('selected-word-label').innerText = selectedText;
+            floatBtn.style.top = `${e.pageY + 12}px`;
+            floatBtn.style.left = `${Math.min(e.pageX, window.innerWidth - 180)}px`;
+            floatBtn.style.display = 'flex';
+        } else if (!e.target.closest('#floating-add-btn')) {
+            floatBtn.style.display = 'none';
+        }
+    }
+
+    function addSelectedTextToInput() {
+        if (currentSelectedText) {
+            const input = document.getElementById('ai-word-input');
+            input.value = currentSelectedText;
+            document.getElementById('floating-add-btn').style.display = 'none';
+            generateWordDataAuto();
+            window.getSelection().removeAllRanges();
+        }
+    }
+
+    /* ===== AUTO TRANSLATE HELPER ===== */
+    async function translateTextAuto(textEn) {
+        if (!textEn) return "";
+        const cleanKey = textEn.trim().toLowerCase();
+        if (OVERRIDE_DICT[cleanKey]) return OVERRIDE_DICT[cleanKey];
+
+        try {
+            const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(textEn)}&langpair=en|vi`);
+            if (res.ok) {
+                const data = await res.json();
+                let trans = data?.responseData?.translatedText || "";
+                if (trans && OVERRIDE_DICT[trans.toLowerCase()]) return OVERRIDE_DICT[trans.toLowerCase()];
+                return trans;
+            }
+        } catch(e) {}
+        return "";
+    }
+
+    /* ===== FETCH IPA PHONETIC CHUẨN ===== */
+    async function fetchIPA(word) {
+        if (!word) return "";
+        const cleanWord = word.trim().toLowerCase();
+        try {
+            const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(cleanWord)}`);
+            if (dictRes.ok) {
+                const dictData = await dictRes.json();
+                if (Array.isArray(dictData)) {
+                    for (let entry of dictData) {
+                        if (entry.phonetic && entry.phonetic.trim()) {
+                            let ph = entry.phonetic.trim();
+                            if (!ph.startsWith('/')) ph = '/' + ph;
+                            if (!ph.endsWith('/')) ph = ph + '/';
+                            return ph;
+                        }
+                        if (Array.isArray(entry.phonetics)) {
+                            for (let p of entry.phonetics) {
+                                if (p.text && p.text.trim()) {
+                                    let ph = p.text.trim();
+                                    if (!ph.startsWith('/')) ph = '/' + ph;
+                                    if (!ph.endsWith('/')) ph = ph + '/';
+                                    return ph;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch(e) {
+            console.warn("Lỗi khi tra cứu IPA:", e);
+        }
+        return "";
+    }
+
+    /* ===== AI CONTEXTUAL EXAMPLE GENERATOR ===== */
+    function generateContextualExample(rawWord, pos, dictionaryExamples = []) {
+        if (Array.isArray(dictionaryExamples) && dictionaryExamples.length > 0) {
+            const validEx = dictionaryExamples.find(e => typeof e === 'string' && e.trim().length > 10);
+            if (validEx) return validEx.trim();
+        }
+
+        const clean = rawWord.trim().toLowerCase();
+        const p = (pos || 'word').toLowerCase();
+
+        const verbTemplates = [
+            `To achieve better outcomes, the project team decided to ${clean} key components during the development phase.`,
+            `Recent corporate guidelines encourage managers to ${clean} operational procedures on a regular basis.`,
+            `Industry experts strongly advise that organizations ${clean} available resources to boost overall efficiency.`,
+            `Following a thorough review, leadership agreed to ${clean} the revised framework across all teams.`,
+            `The company plans to ${clean} innovative tools in order to modernize daily workflow.`
+        ];
+
+        const nounTemplates = [
+            `Developing a robust ${clean} is essential for maintaining smooth and uninterrupted workflows.`,
+            `Understanding the core principles of ${clean} helps professionals solve complex operational challenges.`,
+            `Recent breakthroughs in ${clean} have opened up valuable new opportunities for industry growth.`,
+            `The strategic management of this ${clean} contributed significantly to the project's overall success.`,
+            `A well-designed ${clean} provides a solid foundation for sustainable long-term development.`
+        ];
+
+        const adjTemplates = [
+            `Adopting a ${clean} approach enables organizations to adapt quickly to unpredictable market shifts.`,
+            `The newly implemented platform proved to be remarkably ${clean}, delivering high reliability under load.`,
+            `Having a ${clean} mindset helps teams navigate difficult transitions with confidence and clarity.`,
+            `The latest quarterly report presents a ${clean} evaluation of current performance and future targets.`,
+            `Their dedicated efforts produced a highly ${clean} result that exceeded initial expectations.`
+        ];
+
+        const advTemplates = [
+            `The new system operated ${clean}, allowing users to complete complex tasks without delay.`,
+            `The engineering team worked ${clean} to ensure every specification was met accurately.`,
+            `Key performance metrics improved ${clean} after the strategic update was deployed.`
+        ];
+
+        const phrasalTemplates = [
+            `All team members are expected to ${clean} the established standards and quality requirements.`,
+            `The manager worked closely with staff to ${clean} strategic objectives ahead of schedule.`,
+            `It is crucial for leaders to ${clean} clear policies to maintain workplace transparency.`
+        ];
+
+        let pool = nounTemplates;
+        if (clean.includes(' ')) {
+            pool = phrasalTemplates;
+        } else if (p.includes('verb') || p === 'v') {
+            pool = verbTemplates;
+        } else if (p.includes('adj') || p === 'a') {
+            pool = adjTemplates;
+        } else if (p.includes('adv')) {
+            pool = advTemplates;
+        }
+
+        let hash = 0;
+        for (let i = 0; i < clean.length; i++) {
+            hash = (hash << 5) - hash + clean.charCodeAt(i);
+            hash |= 0;
+        }
+        const index = Math.abs(hash) % pool.length;
+        return pool[index];
+    }
+
+    /* ===== DYNAMIC COLLOCATIONS GENERATOR (DATAMUSE API) ===== */
+    async function generateDynamicCollocations(rawWord, pos) {
+        const clean = rawWord.trim().toLowerCase();
+        const p = (pos || 'word').toLowerCase();
+        let collocations = [];
+
+        try {
+            let endpoint = `https://api.datamuse.com/words?lc=${encodeURIComponent(clean)}&max=6`;
+            if (p.includes('adj')) {
+                endpoint = `https://api.datamuse.com/words?rel_jja=${encodeURIComponent(clean)}&max=6`;
+            } else if (p.includes('noun')) {
+                endpoint = `https://api.datamuse.com/words?rel_jjb=${encodeURIComponent(clean)}&max=6`;
+            }
+
+            const res = await fetch(endpoint);
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data) && data.length > 0) {
+                    const validWords = data
+                        .map(item => item.word ? item.word.toLowerCase().trim() : '')
+                        .filter(w => w && w !== clean && w.length >= 3 && !w.includes(clean));
+
+                    if (validWords.length >= 2) {
+                        const w1 = validWords[0];
+                        const w2 = validWords[1];
+
+                        if (p.includes('verb')) {
+                            collocations.push({
+                                phrase: `${clean} ${w1}`,
+                                example: `The team must ${clean} ${w1} efficiently to meet deadline requirements.`
+                            });
+                            collocations.push({
+                                phrase: `${clean} ${w2}`,
+                                example: `They decided to ${clean} ${w2} for the new initiative.`
+                            });
+                        } else if (p.includes('adj')) {
+                            collocations.push({
+                                phrase: `${clean} ${w1}`,
+                                example: `Maintaining a ${clean} ${w1} is essential for project success.`
+                            });
+                            collocations.push({
+                                phrase: `highly ${clean}`,
+                                example: `The solution proved to be highly ${clean} under stressful conditions.`
+                            });
+                        } else if (p.includes('noun')) {
+                            collocations.push({
+                                phrase: `${w1} ${clean}`,
+                                example: `They developed a modern ${w1} ${clean} to improve overall operations.`
+                            });
+                            collocations.push({
+                                phrase: `${clean} ${w2}`,
+                                example: `The company focused on optimizing the ${clean} ${w2}.`
+                            });
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+            console.warn("Lỗi khi tải collocations từ Datamuse:", e);
+        }
+
+        // Fallback if Datamuse returned no results or failed
+        if (collocations.length === 0) {
+            if (clean.includes(' ')) {
+                collocations = [
+                    {
+                        phrase: `${clean} requirements`,
+                        example: `All staff members must ${clean} requirements established by management.`
+                    },
+                    {
+                        phrase: `strictly ${clean}`,
+                        example: `It is essential to strictly ${clean} safety protocols at all times.`
+                    }
+                ];
+            } else if (p.includes('verb')) {
+                collocations = [
+                    {
+                        phrase: `${clean} resources`,
+                        example: `The manager decided to ${clean} resources to high-priority tasks.`
+                    },
+                    {
+                        phrase: `${clean} strategy`,
+                        example: `They will ${clean} a new strategy to enhance team productivity.`
+                    }
+                ];
+            } else if (p.includes('adj')) {
+                collocations = [
+                    {
+                        phrase: `${clean} approach`,
+                        example: `Adopting a ${clean} approach helps overcome complex challenges.`
+                    },
+                    {
+                        phrase: `highly ${clean}`,
+                        example: `The newly developed framework is highly ${clean} and reliable.`
+                    }
+                ];
+            } else {
+                collocations = [
+                    {
+                        phrase: `${clean} system`,
+                        example: `Installing a modern ${clean} system streamlined the workflow.`
+                    },
+                    {
+                        phrase: `effective ${clean}`,
+                        example: `Building an effective ${clean} is a top priority for the department.`
+                    }
+                ];
+            }
+        }
+
+        for (let c of collocations) {
+            c.exampleVi = await translateTextAuto(c.example) || "Bản dịch ví dụ collocation.";
+        }
+
+        return collocations;
+    }
+
+    /* ===== GENERATE VOCAB DATA AUTOMATICALLY ===== */
+    async function generateWordDataAuto() {
+        const input = document.getElementById('ai-word-input');
+        const rawWord = input.value.trim();
+        if (!rawWord) {
+            alert('Vui lòng nhập từ hoặc cụm từ!');
+            return;
+        }
+
+        if (vocabList.some(v => v.word.toLowerCase() === rawWord.toLowerCase())) {
+            alert(`Từ "${rawWord}" đã có trong bảng từ vựng của bạn!`);
+            return;
+        }
+
+        document.getElementById('ai-loading').style.display = 'flex';
+        document.getElementById('ai-preview').style.display = 'none';
+
+        try {
+            const ipa = await fetchIPA(rawWord);
+
+            let pos = "word";
+            let synonyms = [];
+            let dictExamples = [];
+
+            try {
+                const dictRes = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(rawWord)}`);
+                if (dictRes.ok) {
+                    const dictData = await dictRes.json();
+                    if (Array.isArray(dictData) && dictData[0]) {
+                        const entry = dictData[0];
+                        if (entry.meanings && entry.meanings.length > 0) {
+                            pos = entry.meanings[0].partOfSpeech || "word";
+                            entry.meanings.forEach(m => {
+                                if (m.synonyms && Array.isArray(m.synonyms)) {
+                                    synonyms = synonyms.concat(m.synonyms);
+                                }
+                                if (m.definitions && Array.isArray(m.definitions)) {
+                                    m.definitions.forEach(d => {
+                                        if (d.example) dictExamples.push(d.example);
+                                        if (d.synonyms && Array.isArray(d.synonyms)) {
+                                            synonyms = synonyms.concat(d.synonyms);
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    }
+                }
+            } catch(e) {}
+
+            synonyms = Array.from(new Set(synonyms)).slice(0, 4);
+            if (synonyms.length === 0) synonyms = ["related term"];
+
+            let meaningVi = await translateTextAuto(rawWord) || "Nghĩa tiếng Việt";
+
+            let exampleEn = generateContextualExample(rawWord, pos, dictExamples);
+            let exampleVi = await translateTextAuto(exampleEn) || "Bản dịch ví dụ minh họa.";
+
+            let collocations = await generateDynamicCollocations(rawWord, pos);
+
+            let register = "General";
+            const len = rawWord.length;
+            if (len > 8 || pos === "verb" || pos === "adjective") register = "Academic";
+            if (rawWord.includes(" ")) register = "Formal";
+
+            currentPendingAIWord = {
+                id: Date.now(),
+                word: rawWord.toLowerCase(),
+                ipa: ipa,
+                pos: pos,
+                meaningVi: meaningVi,
+                synonyms: synonyms,
+                collocations: collocations,
+                example: exampleEn,
+                exampleVi: exampleVi,
+                correctCount: 0,
+                wrongCount: 0,
+                level: 0,
+                nextReview: getTodayStr(),
+                register: register,
+                tags: [register, "AI Generated"],
+                difficulty: "medium"
+            };
+
+            document.getElementById('prev-word').innerText = currentPendingAIWord.word;
+            document.getElementById('prev-ipa').innerText = currentPendingAIWord.ipa || '';
+            document.getElementById('prev-pos').innerText = currentPendingAIWord.pos;
+            
+            const regBadge = document.getElementById('prev-register');
+            regBadge.innerText = currentPendingAIWord.register;
+            regBadge.className = `register-badge reg-${currentPendingAIWord.register.toLowerCase()}`;
+
+            document.getElementById('prev-meaning').innerText = currentPendingAIWord.meaningVi;
+            document.getElementById('prev-synonyms').innerText = currentPendingAIWord.synonyms.join(', ');
+
+            let colloHTML = '';
+            currentPendingAIWord.collocations.forEach(c => {
+                colloHTML += `
+                    <div style="margin-bottom:6px;">
+                        <strong style="color:#0077B6;">• ${c.phrase}</strong>: 
+                        <span style="font-style:italic;">"${c.example}"</span>
+                        <div style="font-size:11px; color:#486581;">↳ ${c.exampleVi}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('prev-collocations').innerHTML = colloHTML;
+
+            document.getElementById('prev-example').innerHTML = `
+                "${currentPendingAIWord.example}"
+                <div style="font-size:12px; color:#0077B6; margin-top:4px;">↳ ${currentPendingAIWord.exampleVi}</div>
+            `;
+
+            document.getElementById('ai-preview').style.display = 'block';
+
+        } catch (error) {
+            console.error("Lỗi AI Auto Generate:", error);
+            alert("Có lỗi xảy ra khi tự động tra cứu. Vui lòng thử lại!");
+        } finally {
+            document.getElementById('ai-loading').style.display = 'none';
+        }
+    }
+
+    function confirmAddWord() {
+        if (!currentPendingAIWord) return;
+        vocabList.unshift(currentPendingAIWord);
+        saveData();
+        renderTables();
+        toast(`🌸 Đã thêm từ <strong>"${currentPendingAIWord.word}"</strong> vào bảng học!`);
+        document.getElementById('ai-preview').style.display = 'none';
+        document.getElementById('ai-word-input').value = '';
+        currentPendingAIWord = null;
+    }
+
+    function editPreviewData() {
+        if (!currentPendingAIWord) return;
+        const newMeaning = prompt("Nhập nghĩa tiếng Việt tùy chỉnh:", currentPendingAIWord.meaningVi);
+        if (newMeaning && newMeaning.trim()) {
+            currentPendingAIWord.meaningVi = newMeaning.trim();
+            document.getElementById('prev-meaning').innerText = currentPendingAIWord.meaningVi;
+        }
+    }
+
+    /* ===== SRS MEMORY SCORE CALCULATION ===== */
+    function calculateMemoryScore(item) {
+        const total = item.correctCount + item.wrongCount;
+        if (total === 0) return 0;
+        let accuracy = item.correctCount / total;
+        let levelBonus = Math.min(item.level * 20, 40);
+        let score = Math.round((accuracy * 60) + levelBonus);
+        return Math.min(Math.max(score, 0), 100);
+    }
+
+    function getPosBadgeHTML(pos) {
+        const p = (pos || '').toLowerCase();
+        if (p.includes('noun')) return `<span class="pos-badge pos-noun">Noun</span>`;
+        if (p.includes('verb')) return `<span class="pos-badge pos-verb">Verb</span>`;
+        if (p.includes('adj')) return `<span class="pos-badge pos-adj">Adj</span>`;
+        if (p.includes('adv')) return `<span class="pos-badge pos-adv">Adv</span>`;
+        return `<span class="pos-badge pos-other">${pos || 'Word'}</span>`;
+    }
+
+    function getMemoryBadgeHTML(score) {
+        if (score >= 100) return `<span class="mem-tag mem-tag-master">🏆 Đã thuộc lòng (100%)</span>`;
+        if (score >= 70) return `<span class="mem-tag mem-tag-good">🟢 Tốt (${score}%)</span>`;
+        if (score >= 40) return `<span class="mem-tag mem-tag-mid">🟡 Trung bình (${score}%)</span>`;
+        return `<span class="mem-tag mem-tag-low">🔴 Cần ôn lại (${score}%)</span>`;
+    }
+
+    function changeDifficulty(id, newDiff) {
+        const item = vocabList.find(v => v.id === id);
+        if (item) {
+            item.difficulty = newDiff;
+            saveData();
+            renderTables();
+            toast(`Đã cập nhật độ khó thành <strong>${newDiff.toUpperCase()}</strong>`);
+        }
+    }
+
+    function deleteWord(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa từ vựng này khỏi danh sách?')) {
+            vocabList = vocabList.filter(v => v.id !== id);
+            saveData();
+            renderTables();
+            toast('Đã xóa từ vựng khỏi bảng!');
+        }
+    }
+
+    /* ===== RENDER TABLE ROWS ===== */
+    function renderRow(item, index, isUrgentTable = false) {
+        const maskedWordHTML = maskWordInText(item.word, item.word);
+        const memScore = calculateMemoryScore(item);
+        const dueToday = isDue(item.nextReview);
+
+        let synonymChipsHTML = (item.synonyms || []).map(s => `<span class="synonym-chip">≈ ${s}</span>`).join('');
+        
+        let collocationsHTML = '';
+        if (item.collocations && item.collocations.length > 0) {
+            let itemsHTML = item.collocations.map(c => `
+                <div class="collo-item">
+                    <span class="collo-phrase">• ${c.phrase}</span>
+                    ${c.example ? `<br><span class="collo-ex">"${c.example}"</span>` : ''}
+                </div>
+            `).join('');
+            collocationsHTML = `<div class="collo-box"><strong style="color:#0077B6; font-size:11px;">COLLOCATIONS:</strong>${itemsHTML}</div>`;
+        }
+
+        const maskedExampleEN = maskWordInText(item.example, item.word);
+
+        let practiceStatusBadge = `<span class="status-badge badge-pending">Chờ nhập</span>`;
+        let inputDisabledAttr = "";
+        
+        if (inlineAttemptsMap[item.id]) {
+            const st = inlineAttemptsMap[item.id];
+            if (st === 'CORRECT') {
+                practiceStatusBadge = `<span class="status-badge badge-true">✓ Đúng</span>`;
+            } else if (st === 'INCORRECT') {
+                practiceStatusBadge = `<span class="status-badge badge-false">✕ Sai</span>`;
+            } else if (st === 'LOCKED') {
+                practiceStatusBadge = `<span class="status-badge badge-locked">🔒 Khóa</span>`;
+                inputDisabledAttr = "disabled";
+            }
+        }
+
+        return `
+            <tr class="${dueToday ? 'due-row' : ''}">
+                <td data-label="#"><strong>${index + 1}</strong></td>
+                <td data-label="Từ gốc & Collocation">
+                    <div class="word-cell">
+                        ${maskedWordHTML}
+                        <button class="speaker-btn" title="Nghe phát âm" onclick="speak('${item.word}')">🔊</button>
+                    </div>
+                    <div class="ipa-tag">${item.ipa || ''}</div>
+                    <div>${synonymChipsHTML}</div>
+                    ${collocationsHTML}
+                </td>
+                <td data-label="Từ loại">${getPosBadgeHTML(item.pos)}</td>
+                <td data-label="Nghĩa tiếng Việt">
+                    <strong style="color: #0B2545; font-size: 15px;">${item.meaningVi}</strong>
+                </td>
+                <td data-label="Ôn tập">
+                    <input type="text" 
+                           class="practice-input" 
+                           id="input-${item.id}" 
+                           placeholder="Nhập từ tiếng Anh..." 
+                           ${inputDisabledAttr} 
+                           onkeydown="if(event.key==='Enter') submitInlinePractice(${item.id})">
+                </td>
+                <td data-label="Check">${practiceStatusBadge}</td>
+                <td data-label="Lịch ôn tiếp theo">
+                    <span class="next-review-tag ${dueToday ? 'tag-due-today' : 'tag-future'}">
+                        ${formatDateDisplay(item.nextReview)}
+                    </span>
+                </td>
+                <td data-label="Độ thuộc (%)">
+                    <div style="font-weight: 800; font-size: 13px;">${memScore}%</div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: ${memScore}%; background: ${memScore >= 70 ? '#38B000' : (memScore >= 40 ? '#FFD166' : '#FF4D6D')};"></div>
+                    </div>
+                    ${getMemoryBadgeHTML(memScore)}
+                </td>
+                <td data-label="Ví dụ minh họa">
+                    <div class="example-box">
+                        "${maskedExampleEN}"
+                        <button class="trans-btn" onclick="toggleTrans(${item.id})">Dịch</button>
+                        <div id="trans-${item.id}" class="trans-text">↳ ${item.exampleVi}</div>
+                    </div>
+                </td>
+                ${!isUrgentTable ? `
+                <td data-label="Thao tác">
+                    <button class="delete-btn" title="Xóa từ" onclick="deleteWord(${item.id})">🗑️</button>
+                </td>` : ''}
+            </tr>
+        `;
+    }
+
+    /* ===== RENDER ALL TABLES ===== */
+    function renderTables() {
+        const searchVal = document.getElementById('search-input').value.toLowerCase().trim();
+        const filterVal = document.getElementById('filter-select').value;
+
+        const urgentBody = document.getElementById('urgent-table-body');
+        const mainBody = document.getElementById('main-table-body');
+
+        const urgentList = vocabList.filter(item => isDue(item.nextReview));
+        document.getElementById('urgent-count-tag').innerText = `${urgentList.length} từ`;
+        document.getElementById('daily-due-count').innerText = urgentList.length;
+
+        if (urgentList.length === 0) {
+            document.getElementById('urgent-section').style.display = 'none';
+        } else {
+            document.getElementById('urgent-section').style.display = 'block';
+            urgentBody.innerHTML = urgentList.map((item, idx) => renderRow(item, idx, true)).join('');
+        }
+
+        let filteredList = vocabList.filter(item => {
+            const matchesSearch = item.word.toLowerCase().includes(searchVal) ||
+                                  item.meaningVi.toLowerCase().includes(searchVal) ||
+                                  (item.synonyms && item.synonyms.some(s => s.toLowerCase().includes(searchVal))) ||
+                                  (item.tags && item.tags.some(t => t.toLowerCase().includes(searchVal)));
+
+            if (!matchesSearch) return false;
+
+            if (filterVal === 'due') return isDue(item.nextReview);
+            if (filterVal === 'learning') return calculateMemoryScore(item) < 100;
+            if (filterVal === 'mastered') return calculateMemoryScore(item) >= 100;
+            return true;
+        });
+
+        if (filteredList.length === 0) {
+            mainBody.innerHTML = `<tr><td colspan="10" style="text-align:center; padding: 32px; color: #486581; font-weight: 800;">🌸 Không tìm thấy từ vựng nào phù hợp!</td></tr>`;
+        } else {
+            mainBody.innerHTML = filteredList.map((item, idx) => renderRow(item, idx, false)).join('');
+        }
+
+        const totalMastered = vocabList.filter(item => calculateMemoryScore(item) >= 100).length;
+        document.getElementById('daily-done-count').innerText = totalMastered;
+        const progressPct = vocabList.length > 0 ? Math.round((totalMastered / vocabList.length) * 100) : 0;
+        document.getElementById('daily-progress-fill').style.width = `${progressPct}%`;
+    }
+
+    /* ===== CHECK SYNONYM AND AI VALIDATION ===== */
+    async function checkSynonymWithAI(userAnswer, targetWord, item) {
+        const u = userAnswer.trim().toLowerCase();
+        const t = targetWord.trim().toLowerCase();
+
+        if (u === t) return { isCorrect: true, reason: "Chính xác tuyệt đối!" };
+
+        if (item.synonyms && item.synonyms.map(s => s.toLowerCase()).includes(u)) {
+            return { isCorrect: true, reason: `Đúng! "${u}" là từ đồng nghĩa chuẩn với "${t}".` };
+        }
+
+        try {
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(u)}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data) && data[0]) {
+                    let extractedSyns = [];
+                    data[0].meanings?.forEach(m => {
+                        if (m.synonyms) extractedSyns = extractedSyns.concat(m.synonyms);
+                        m.definitions?.forEach(d => { if (d.synonyms) extractedSyns = extractedSyns.concat(d.synonyms); });
+                    });
+                    if (extractedSyns.map(s => s.toLowerCase()).includes(t)) {
+                        return { isCorrect: true, reason: `Chấp nhận! "${u}" là từ đồng nghĩa được AI xác minh.` };
+                    }
+                }
+            }
+        } catch(e) {}
+
+        return { isCorrect: false, reason: `Chưa đúng. Đáp án chuẩn là: "${t}"` };
+    }
+
+    /* ===== SUBMIT INLINE PRACTICE INPUT ===== */
+    async function submitInlinePractice(id) {
+        const inputEl = document.getElementById(`input-${id}`);
+        const userVal = inputEl.value.trim();
+        if (!userVal) return;
+
+        const item = vocabList.find(v => v.id === id);
+        if (!item) return;
+
+        const result = await checkSynonymWithAI(userVal, item.word, item);
+
+        if (result.isCorrect) {
+            inputEl.className = "practice-input correct";
+            inlineAttemptsMap[id] = 'CORRECT';
+            item.correctCount = (item.correctCount || 0) + 1;
+            item.level = (item.level || 0) + 1;
+            
+            const nextDays = Math.pow(2, item.level);
+            const d = new Date();
+            d.setDate(d.getDate() + nextDays);
+            item.nextReview = d.toISOString().split('T')[0];
+
+            saveData();
+            toast(`🎉 Chính xác! +1 Level cho từ <strong>"${item.word}"</strong>`);
+        } else {
+            inputEl.className = "practice-input incorrect";
+            inlineAttemptsMap[id] = 'INCORRECT';
+            item.wrongCount = (item.wrongCount || 0) + 1;
+            item.level = Math.max((item.level || 0) - 1, 0);
+            item.nextReview = getTodayStr();
+
+            saveData();
+            toast(`❌ Sai rồi! Đáp án là: <strong>"${item.word}"</strong>`);
+        }
+
+        renderTables();
+    }
+
+    /* ===== SMART REVIEW MODAL SYSTEM ===== */
+    function startSmartReview() {
+        const dueItems = vocabList.filter(v => isDue(v.nextReview));
+        reviewQueue = dueItems.length > 0 ? [...dueItems] : [...vocabList];
+
+        if (reviewQueue.length === 0) {
+            alert('Chưa có từ vựng nào trong danh sách để ôn tập!');
+            return;
+        }
+
+        reviewQueue.sort(() => Math.random() - 0.5);
+        reviewIndex = 0;
+        document.getElementById('review-modal').style.display = 'flex';
+        loadReviewCard();
+    }
+
+    function loadReviewCard() {
+        if (reviewIndex >= reviewQueue.length) {
+            document.getElementById('review-prompt').innerHTML = "🎉 Tuyệt vời! Bạn đã hoàn thành bài ôn tập hôm nay!";
+            document.getElementById('review-input').style.display = 'none';
+            document.getElementById('review-feedback').innerHTML = "";
+            document.getElementById('review-answer-hint').innerHTML = "";
+            document.getElementById('review-check-btn').classList.add('hidden');
+            document.getElementById('review-next-btn').classList.add('hidden');
+            document.getElementById('review-retry-btn').classList.add('hidden');
+            document.getElementById('review-skip-btn').classList.add('hidden');
+            document.getElementById('review-close-btn').classList.remove('hidden');
+            document.getElementById('review-audio-btn').classList.add('hidden');
+            return;
+        }
+
+        currentReviewItem = reviewQueue[reviewIndex];
+        reviewAnswered = false;
+        reviewWrongAttempts = 0;
+
+        const total = reviewQueue.length;
+        document.getElementById('review-counter').innerText = `${reviewIndex + 1} / ${total}`;
+        document.getElementById('review-progress-fill').style.width = `${((reviewIndex) / total) * 100}%`;
+
+        const modes = ['RECALL', 'EXAMPLE', 'LISTENING'];
+        currentReviewMode = modes[Math.floor(Math.random() * modes.length)];
+
+        const promptEl = document.getElementById('review-prompt');
+        const badgeEl = document.getElementById('review-mode-badge');
+        const audioBtn = document.getElementById('review-audio-btn');
+        const inputEl = document.getElementById('review-input');
+
+        inputEl.style.display = 'block';
+        inputEl.value = '';
+        inputEl.removeAttribute('readonly');
+        inputEl.className = 'practice-input review-input-box';
+        inputEl.focus();
+
+        document.getElementById('review-feedback').innerHTML = '';
+        document.getElementById('review-answer-hint').innerHTML = '';
+
+        document.getElementById('review-check-btn').classList.remove('hidden');
+        document.getElementById('review-next-btn').classList.add('hidden');
+        document.getElementById('review-retry-btn').classList.add('hidden');
+        document.getElementById('review-skip-btn').classList.add('hidden');
+        document.getElementById('review-close-btn').classList.add('hidden');
+
+        if (currentReviewMode === 'RECALL') {
+            badgeEl.innerText = "🎯 RECALL MODE";
+            promptEl.innerHTML = `Nghĩa tiếng Việt:<br><strong style="color:#0077B6; font-size:26px;">"${currentReviewItem.meaningVi}"</strong>`;
+            audioBtn.classList.add('hidden');
+        } else if (currentReviewMode === 'EXAMPLE') {
+            badgeEl.innerText = "📖 CONTEXT MODE";
+            const maskedEx = maskWordInTextForce(currentReviewItem.example, currentReviewItem.word);
+            promptEl.innerHTML = `Điền từ thích hợp vào chỗ trống:<br><em>"${maskedEx}"</em>`;
+            audioBtn.classList.add('hidden');
+        } else if (currentReviewMode === 'LISTENING') {
+            badgeEl.innerText = "🎧 LISTENING MODE";
+            promptEl.innerHTML = `Nghe âm thanh và gõ lại từ đúng:`;
+            audioBtn.classList.remove('hidden');
+            speak(currentReviewItem.word);
+        }
+    }
+
+    function playReviewAudio() {
+        if (currentReviewItem) speak(currentReviewItem.word);
+    }
+
+    async function checkSmartReview() {
+        if (reviewAnswered) return;
+
+        const inputEl = document.getElementById('review-input');
+        const userVal = inputEl.value.trim();
+        if (!userVal) return;
+
+        document.getElementById('review-ai-checking').style.display = 'flex';
+
+        const result = await checkSynonymWithAI(userVal, currentReviewItem.word, currentReviewItem);
+
+        document.getElementById('review-ai-checking').style.display = 'none';
+
+        const feedbackEl = document.getElementById('review-feedback');
+        const hintEl = document.getElementById('review-answer-hint');
+
+        if (result.isCorrect) {
+            reviewAnswered = true;
+            inputEl.className = "practice-input review-input-box correct";
+            inputEl.setAttribute('readonly', 'true');
+            feedbackEl.className = "review-feedback review-good";
+            feedbackEl.innerText = `🎉 ${result.reason}`;
+
+            currentReviewItem.correctCount = (currentReviewItem.correctCount || 0) + 1;
+            currentReviewItem.level = (currentReviewItem.level || 0) + 1;
+            const d = new Date();
+            d.setDate(d.getDate() + Math.pow(2, currentReviewItem.level));
+            currentReviewItem.nextReview = d.toISOString().split('T')[0];
+
+            saveData();
+            speak(currentReviewItem.word);
+
+            document.getElementById('review-check-btn').classList.add('hidden');
+            document.getElementById('review-retry-btn').classList.add('hidden');
+            document.getElementById('review-skip-btn').classList.add('hidden');
+            document.getElementById('review-next-btn').classList.remove('hidden');
+        } else {
+            reviewWrongAttempts++;
+            inputEl.className = "practice-input review-input-box incorrect";
+
+            if (reviewWrongAttempts === 1) {
+                feedbackEl.className = "review-feedback review-warn";
+                feedbackEl.innerText = `⚠️ Bán chính xác / Chưa đúng! Hãy thử lại lần nữa.`;
+                hintEl.innerText = `Gợi ý: Từ bắt đầu bằng chữ "${currentReviewItem.word.charAt(0).toUpperCase()}" và có ${currentReviewItem.word.length} ký tự.`;
+
+                document.getElementById('review-check-btn').classList.add('hidden');
+                document.getElementById('review-retry-btn').classList.remove('hidden');
+                document.getElementById('review-skip-btn').classList.remove('hidden');
+            } else {
+                reviewAnswered = true;
+                inputEl.setAttribute('readonly', 'true');
+                feedbackEl.className = "review-feedback review-bad";
+                feedbackEl.innerText = `❌ Rất tiếc, câu trả lời chưa đúng.`;
+                hintEl.innerHTML = `Đáp án chuẩn: <strong style="color:#0077B6; font-size:20px;">${currentReviewItem.word}</strong> (${currentReviewItem.ipa || ''})`;
+
+                currentReviewItem.wrongCount = (currentReviewItem.wrongCount || 0) + 1;
+                currentReviewItem.level = Math.max((currentReviewItem.level || 0) - 1, 0);
+                currentReviewItem.nextReview = getTodayStr();
+
+                saveData();
+
+                document.getElementById('review-check-btn').classList.add('hidden');
+                document.getElementById('review-retry-btn').classList.add('hidden');
+                document.getElementById('review-skip-btn').classList.add('hidden');
+                document.getElementById('review-next-btn').classList.remove('hidden');
+            }
+        }
+    }
+
+    function handleReviewEnter() {
+        if (!reviewAnswered && reviewWrongAttempts === 0) {
+            checkSmartReview();
+        } else if (!reviewAnswered && reviewWrongAttempts === 1) {
+            checkSmartReview();
+        } else if (reviewAnswered) {
+            nextSmartReview();
+        }
+    }
+
+    function retrySmartReview() {
+        const inputEl = document.getElementById('review-input');
+        inputEl.className = 'practice-input review-input-box';
+        inputEl.value = '';
+        inputEl.focus();
+        document.getElementById('review-feedback').innerText = '';
+        document.getElementById('review-check-btn').classList.remove('hidden');
+        document.getElementById('review-retry-btn').classList.add('hidden');
+    }
+
+    function skipSmartReview() {
+        reviewAnswered = true;
+        const inputEl = document.getElementById('review-input');
+        inputEl.setAttribute('readonly', 'true');
+        
+        document.getElementById('review-feedback').className = "review-feedback review-bad";
+        document.getElementById('review-feedback').innerText = `⏭️ Đã xem đáp án.`;
+        document.getElementById('review-answer-hint').innerHTML = `Đáp án chuẩn: <strong style="color:#0077B6; font-size:20px;">${currentReviewItem.word}</strong> (${currentReviewItem.ipa || ''})`;
+
+        currentReviewItem.wrongCount = (currentReviewItem.wrongCount || 0) + 1;
+        currentReviewItem.level = Math.max((currentReviewItem.level || 0) - 1, 0);
+        currentReviewItem.nextReview = getTodayStr();
+
+        saveData();
+
+        document.getElementById('review-check-btn').classList.add('hidden');
+        document.getElementById('review-retry-btn').classList.add('hidden');
+        document.getElementById('review-skip-btn').classList.add('hidden');
+        document.getElementById('review-next-btn').classList.remove('hidden');
+    }
+
+    function nextSmartReview() {
+        reviewIndex++;
+        loadReviewCard();
+    }
+
+    function closeReview() {
+        document.getElementById('review-modal').style.display = 'none';
+        renderTables();
+    }
+
+    /* ===== STATS MODAL ===== */
+    function openStats() {
+        const total = vocabList.length;
+        const mastered = vocabList.filter(v => calculateMemoryScore(v) >= 100).length;
+        
+        let totalCorrect = 0;
+        let totalWrong = 0;
+        vocabList.forEach(v => {
+            totalCorrect += (v.correctCount || 0);
+            totalWrong += (v.wrongCount || 0);
+        });
+
+        const totalReviews = totalCorrect + totalWrong;
+        const accuracy = totalReviews > 0 ? Math.round((totalCorrect / totalReviews) * 100) : 0;
+
+        document.getElementById('stat-total-words').innerText = total;
+        document.getElementById('stat-mastered-words').innerText = mastered;
+        document.getElementById('stat-accuracy').innerText = `${accuracy}%`;
+        document.getElementById('stat-total-reviews').innerText = totalReviews;
+
+        document.getElementById('stats-modal').style.display = 'flex';
+    }
+
+    function closeStats() {
+        document.getElementById('stats-modal').style.display = 'none';
+    }
+
+    /* ===== INITIALIZATION ===== */
+    document.addEventListener('DOMContentLoaded', () => {
+        loadData();
+        renderTables();
+    });
+</script>
+
+</body>
+</html>
